@@ -1,11 +1,11 @@
 import React from "react";
 
-/* MainLoading doit prendre toute la place de la div */
-
 const MainLoading = () => {
   return (
-    <div>
-      <h1>I AM LOADING</h1>
+    <div className='mt-5'>
+      <progress className='progress is-large is-info mt-5' max='100'>
+        60%
+      </progress>
     </div>
   );
 };

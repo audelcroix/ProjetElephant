@@ -30,6 +30,7 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+/////////////////////////////////////////
 app.use(function (req, res, next) {
   console.log("A REQUEST HAS BEEN RECEIVED");
   console.log("Time:", Date.now());

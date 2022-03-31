@@ -2,8 +2,10 @@ import React from "react";
 
 const PartialLoading = () => {
   return (
-    <div>
-      <h1>PARTIAL LOADING</h1>
+    <div className='mt-5'>
+      <progress className='progress is-large is-info mt-5' max='100'>
+        60%
+      </progress>
     </div>
   );
 };
