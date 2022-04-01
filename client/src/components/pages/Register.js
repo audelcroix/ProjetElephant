@@ -39,7 +39,7 @@ const Register = (props) => {
     event.preventDefault();
 
     if (!emailIsValid(userToRegister.email)) {
-      dispatch(setErrorMsgs(["Email invalide"]));
+      dispatch(setErrorMsgs(["Email invalide", "grudu"]));
     } else if (userToRegister.password.length < 8) {
       dispatch(
         setErrorMsgs(["Le mot de passe doit comporter au moins 8 caractères"])

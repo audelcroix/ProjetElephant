@@ -13,8 +13,12 @@ exports.handleMongooseDocCreationError = (
     });
   }
 
-  if (err.error_msg) {
-    error_msg.push(err.error_msg);
+  console.log(err, err.errors);
+
+  if (err.error_msg && err.error_msg.length > 1) {
+    err.error_msg.forEach((el) => {
+      error_msg.push(el);
+    });
   }
 
   if (error_msg.length < 1 && err.name === "ValidationError") {

@@ -28,8 +28,6 @@ exports.registerUser = async (req, res) => {
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      console.log("HERE ERR!");
-      console.log(errors);
       errors = errors.array();
 
       let error_msg = [];

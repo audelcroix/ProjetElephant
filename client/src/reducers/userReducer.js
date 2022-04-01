@@ -244,9 +244,23 @@ export default (state = initialState, action) => {
       };
 
     case SET_ERROR_MSGS:
+      console.log(action.payload);
+      console.log(action.payload[0]);
+      console.log(action.payload.length);
       let treatedErrors = action.payload.map((err) => {
         return { error_msg: err, _id: uuidv4() };
       });
+
+      /* let treatedErrors = [];
+
+      action.payload.forEach((errorToTreat) => {
+        console.log({ error_msg: errorToTreat, _id: uuidv4() });
+        treatedErrors.push({ error_msg: errorToTreat, _id: uuidv4() });
+      }); */
+
+      console.log(treatedErrors);
+
+      console.log([...state.error_msgs, ...treatedErrors]);
 
       return {
         ...state,

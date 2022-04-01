@@ -756,19 +756,20 @@ export const loadUserCollections = () => async (dispatch) => {
 export const createCollection = (formData) => async (dispatch) => {
   try {
     dispatch(setLoadingPartial(true));
-    console.log("dqsgfydshfgyhg fiygsdfiygy");
+
     const newCollectionRes = await axios.post(
       "/api/collections/create_collection",
       formData,
       config
     );
 
-    console.log(newCollectionRes);
-
     dispatch({ type: ADD_NEW_COLLECTION, payload: newCollectionRes.data });
 
     dispatch(setLoadingPartial(false));
   } catch (err) {
+    console.log(err.response.data);
+    console.log(err.response.data.error_msg);
+    console.log([...err.response.data.error_msg]);
     dispatch(
       setErrorMsgs(
         err.response &&
@@ -794,7 +795,10 @@ export const addToCollection = (updatedCollection) => (dispatch) => {
 
 // MESSAGES
 export const setErrorMsgs = (error_msgs) => (dispatch) => {
-  dispatch({ type: SET_ERROR_MSGS, payload: error_msgs });
+  console.log(error_msgs);
+  console.log(error_msgs.length);
+  console.log([...error_msgs]);
+  dispatch({ type: SET_ERROR_MSGS, payload: [...error_msgs] });
 };
 
 export const deleteIndividualErrorMsg = (error_msg_id) => (dispatch) => {

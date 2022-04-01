@@ -12,9 +12,7 @@ import IndividualCollection from "./IndividualCollection";
 import PartialLoading from "./PartialLoading";
 
 const CollectionsMode = () => {
-  const { loading, loading_partial, user, collections } = useSelector(
-    (state) => state.user
-  );
+  const { loading_partial, collections } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
@@ -57,6 +55,7 @@ const CollectionsMode = () => {
 
       dispatch(setLoading(false));
     } catch (err) {
+      console.log(err);
       dispatch(setErrorMsgs([err.response.data.error_msg]));
       dispatch(setLoading(false));
     }
