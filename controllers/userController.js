@@ -71,11 +71,15 @@ exports.registerUser = async (req, res) => {
       return res.status(200).json({ token, user: newUser });
     });
   } catch (err) {
-    res.status(500).json({
-      error_msg: [
-        "Oops! Une erreur interne s'est produite lors de la connexion...",
-      ],
-    });
+    if (err.error_msg) {
+      res.status(401).json({ error_msg: [...err.error_msg] });
+    } else {
+      return res.status(500).json({
+        error_msg: [
+          "Oops! Une erreur interne s'est produite lors de la connexion...",
+        ],
+      });
+    }
   }
 };
 
