@@ -15,7 +15,7 @@ exports.handleMongooseDocCreationError = (
 
   console.log(err, err.errors);
 
-  if (err.error_msg && err.error_msg.length > 1) {
+  if (err.error_msg && err.error_msg.length >= 1) {
     err.error_msg.forEach((el) => {
       error_msg.push(el);
     });
