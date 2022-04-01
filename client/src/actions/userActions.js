@@ -224,6 +224,7 @@ export const updateNote = (formData) => async (dispatch) => {
     );
 
     dispatch({ type: UPDATE_NOTE, payload: updatedNoteRes.data });
+    return true;
   } catch (err) {
     dispatch(
       setErrorMsgs(
@@ -235,6 +236,8 @@ export const updateNote = (formData) => async (dispatch) => {
           : ["Oops, une erreur inattendue s'est produite"]
       )
     );
+
+    return false;
   }
 };
 

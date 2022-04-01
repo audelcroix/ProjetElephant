@@ -63,21 +63,23 @@ const NoteDetail = (props) => {
     setUpdatedNoteContent(event.target.value);
   };
 
-  const handleNoteUpdate = (event) => {
-    try {
-      event.preventDefault();
+  const handleNoteUpdate = async (event) => {
+    event.preventDefault();
 
-      dispatch(
-        updateNote({
-          content: updatedNoteContent,
-          noteToUpdateId: localNote._id,
-        })
-      );
+    // updateNote return a success status boolean to allow the local note to be updated
+    let updateSuccessful = await dispatch(
+      updateNote({
+        content: updatedNoteContent,
+        noteToUpdateId: localNote._id,
+      })
+    );
 
+    updateSuccessful &&
       setLocalNote({ ...localNote, content: updatedNoteContent });
 
-      setShowUpdateForm(false);
-    } catch (err) {}
+    setUpdatedNoteContent(localNote.content);
+
+    setShowUpdateForm(false);
   };
 
   return (

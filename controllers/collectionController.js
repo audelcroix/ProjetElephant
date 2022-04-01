@@ -12,20 +12,6 @@ exports.createCollection = async (req, res) => {
   try {
     const { description, title } = req.body;
 
-    /*     if (!title) {
-      throw { error_msg: "Le titre est nécessaire" };
-    }
-
-    if (title.length < 3 || title.length > 140) {
-      throw { error_msg: "Le titre doit comporter entre 3 et 140 caractères" };
-    }
-
-    if (description && (description.length < 3 || description.length > 500)) {
-      throw {
-        error_msg: "La description doit comporter entre 3 et 500 caractères",
-      };
-    } */
-
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -235,22 +221,6 @@ exports.editCollection = async (req, res) => {
         error_msg: "Vous n'avez pas la permission de modifier cette collection",
       };
     }
-
-    /* if (!title || title.length < 3 || title.length > 140) {
-      throw {
-        error_msg:
-          "Le titre d'une collection doit être compris entre 3 et 140 caractères",
-      };
-    }
-
-    if (
-      (description && description.length > 500) ||
-      (description && description.length < 3)
-    ) {
-      throw {
-        error_msg: "La description doit comporter entre 3 et 500 caractères",
-      };
-    } */
 
     let errors = validationResult(req);
 

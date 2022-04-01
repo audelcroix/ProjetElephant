@@ -48,10 +48,11 @@ const CollectionDetail = (props) => {
         });
         dispatch(setLoading(false));
       } catch (err) {
+        console.log(err.response.data.error_msg);
         dispatch(
           setErrorMsgs(
             err.response && err.response.data.error_msg
-              ? [err.response.data.error_msg]
+              ? [...err.response.data.error_msg]
               : [
                   "Oops! Une erreur inattendue s'est produite lors du chargement",
                 ]
