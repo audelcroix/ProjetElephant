@@ -141,6 +141,7 @@ const TaskDetail = (props) => {
 
   // Load the task and its subtasks
   useEffect(() => {
+    console.log("GRUDU");
     const getTask = async () => {
       try {
         dispatch(setLoading(true));
@@ -342,7 +343,7 @@ const TaskDetail = (props) => {
               </div>
             )}
 
-            {/* SOUS-TACHES */}
+            {/* SUBTASKS */}
 
             {!isAddingSubtask && (
               <div className='block'>

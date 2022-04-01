@@ -408,6 +408,20 @@ exports.updateTaskSimple = async (req, res) => {
     const targetTaskId = req.params.id;
     const { content, limitDate } = req.body;
 
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      errors = errors.array();
+
+      let error_msg = [];
+
+      errors.forEach((el) => {
+        error_msg.push(el.msg);
+      });
+
+      throw { error_msg };
+    }
+
     // check if task exists and user is allowed to update it
     const targetTask = await Task.findById(targetTaskId);
 
@@ -425,38 +439,18 @@ exports.updateTaskSimple = async (req, res) => {
       throw { error_msg: "Impossible de modifier une tâche terminée" };
     }
 
-    // Check if content is valid
-    /* if (!content || content.length < 3 || content.length > 280) {
-      throw {
-        error_msg:
-          "Le contenu d'une tâche doit être compris entre 3 et 280 caractères",
-      };
-    } */
+    if (limitDate) {
+      // Validate the date. Date must be in the past and valid
+      const translatedLimitDate = new Date(limitDate).getTime();
+      const isInvalidDate = Number.isNaN(translatedLimitDate);
 
-    let errors = validationResult(req);
+      if (isInvalidDate) {
+        throw { error_msg: "Cette date est invalide" };
+      }
 
-    if (!errors.isEmpty()) {
-      errors = errors.array();
-
-      let error_msg = [];
-
-      errors.forEach((el) => {
-        error_msg.push(el.msg);
-      });
-
-      throw { error_msg };
-    }
-
-    // Validate the date. Date must be in the past and valid
-    const translatedLimitDate = new Date(limitDate).getTime();
-    const isInvalidDate = Number.isNaN(translatedLimitDate);
-
-    if (isInvalidDate) {
-      throw { error_msg: "Cette date est invalide" };
-    }
-
-    if (translatedLimitDate < Date.now()) {
-      throw { error_msg: "La date doit être dans le futur" };
+      if (translatedLimitDate < Date.now()) {
+        throw { error_msg: "La date doit être dans le futur" };
+      }
     }
 
     Task.findByIdAndUpdate(
@@ -499,6 +493,20 @@ exports.updateSubtask = async (req, res) => {
     const targetSubtaskId = req.params.id;
     const { content, limitDate } = req.body;
 
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      errors = errors.array();
+
+      let error_msg = [];
+
+      errors.forEach((el) => {
+        error_msg.push(el.msg);
+      });
+
+      throw { error_msg };
+    }
+
     // check if subtask exists and user is allowed to update it
     const targetSubtask = await Subtask.findById(targetSubtaskId);
 
@@ -515,30 +523,8 @@ exports.updateSubtask = async (req, res) => {
     if (targetSubtask.isDone === true) {
       throw { error_msg: "Impossible de modifier une sous-tâche terminée" };
     }
+    console.log(limitDate);
 
-    // Check if content is valid
-    /* if (!content || content.length < 3 || content.length > 280) {
-      throw {
-        error_msg:
-          "Le contenu d'une sous-tâche doit être compris entre 3 et 280 caractères",
-      };
-    } */
-
-    let errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-      errors = errors.array();
-
-      let error_msg = [];
-
-      errors.forEach((el) => {
-        error_msg.push(el.msg);
-      });
-
-      throw { error_msg };
-    }
-
-    // PROTO
     if (limitDate) {
       // Validate the date. Date must be in the past and valid
       const translatedLimitDate = new Date(limitDate).getTime();
@@ -551,8 +537,6 @@ exports.updateSubtask = async (req, res) => {
       if (translatedLimitDate < Date.now()) {
         throw { error_msg: "La date doit être dans le futur" };
       }
-    } else {
-      let limitDate = null;
     }
 
     Subtask.findByIdAndUpdate(
@@ -583,6 +567,8 @@ exports.updateSubtask = async (req, res) => {
       ["description", "title"],
       "Oops! Une erreur interne est survenue lors de la mise à jour de cette tâche"
     );
+
+    console.log(err);
 
     return res
       .status(errorToReturn.code)

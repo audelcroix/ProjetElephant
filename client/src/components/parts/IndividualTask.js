@@ -21,7 +21,7 @@ const IndividualTask = (props) => {
   const [isBeingUpdated, setIsBeingUpdated] = useState(false);
   const [updatedTaskContent, setUpdatedTaskContent] = useState(task.content);
   const [updatedTaskLimitDate, setUpdatedTaskLimitDate] = useState(
-    task.limitDate ? new Date(task.limitDate) : new Date()
+    task.limitDate ? new Date(task.limitDate) : null
   );
 
   const handleTaskUpdate = (event) => {
@@ -130,14 +130,16 @@ const IndividualTask = (props) => {
                 </button>
               )}
 
-              <button
-                className='button is-small is-warning'
-                onClick={() => {
-                  setIsBeingUpdated(true);
-                }}
-              >
-                Modifier
-              </button>
+              {!task.isDone && (
+                <button
+                  className='button is-small is-warning'
+                  onClick={() => {
+                    setIsBeingUpdated(true);
+                  }}
+                >
+                  Modifier
+                </button>
+              )}
 
               <button
                 className='button is-small is-danger'

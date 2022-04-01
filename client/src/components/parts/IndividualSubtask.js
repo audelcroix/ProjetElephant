@@ -30,7 +30,7 @@ const IndividualSubtask = (props) => {
     subtask.content
   );
   const [updatedSubtaskLimitDate, setUpdatedSubtaskLimitDate] = useState(
-    subtask.limitDate && new Date(subtask.limitDate)
+    subtask.limitDate ? new Date(subtask.limitDate) : null
   );
   const [showSubtaskUpdateForm, setShowSubtaskUpdateForm] = useState(false);
 
@@ -72,7 +72,6 @@ const IndividualSubtask = (props) => {
     setUpdatedSubtaskContent(event.target.value);
   };
 
-  // GERE PAS ENCORE LES ERREURS
   const handleUpdateSubtask = async (event) => {
     try {
       event.preventDefault();
@@ -94,9 +93,7 @@ const IndividualSubtask = (props) => {
         `http://localhost:5000/api/tasks/edit_subtask/${subtask._id}`,
         {
           content: updatedSubtaskContent,
-          ...(updatedSubtaskLimitDate && {
-            limitDate: updatedSubtaskLimitDate,
-          }),
+          limitDate: updatedSubtaskLimitDate,
         },
         config
       );

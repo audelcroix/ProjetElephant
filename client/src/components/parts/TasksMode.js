@@ -15,13 +15,13 @@ import IndividualTask from "./IndividualTask";
 import PartialLoading from "./PartialLoading";
 
 const TasksMode = () => {
-  const { loading_partial, user, tasks } = useSelector((state) => state.user);
+  const { loading_partial, tasks } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
   const [showNewTaskForm, setShowNewTaskForm] = useState(false);
   const [newTaskContent, setNewTaskContent] = useState("");
-  const [newTaskLimitDate, setNewTaskLimitDate] = useState();
+  const [newTaskLimitDate, setNewTaskLimitDate] = useState(null);
 
   registerLocale("fr", fr);
 
