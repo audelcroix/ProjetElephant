@@ -767,9 +767,6 @@ export const createCollection = (formData) => async (dispatch) => {
 
     dispatch(setLoadingPartial(false));
   } catch (err) {
-    console.log(err.response.data);
-    console.log(err.response.data.error_msg);
-    console.log([...err.response.data.error_msg]);
     dispatch(
       setErrorMsgs(
         err.response &&

@@ -108,7 +108,7 @@ const ProcessDetail = (props) => {
 
   const handleProcessDelete = async () => {
     try {
-      const deleteProcessRes = await axios.delete(
+      await axios.delete(
         `http://localhost:5000/api/processes/delete_process/${currentProcess._id}`
       );
 
@@ -273,6 +273,11 @@ const ProcessDetail = (props) => {
                         <h2 className='subtitle'>{currentProcess.title}</h2>
 
                         <p className=''>{currentProcess.description}</p>
+
+                        <small>
+                          {currentProcess.steps.length} étape
+                          {currentProcess.steps.length > 1 && "s"}
+                        </small>
                       </div>
                     </div>
 
@@ -282,10 +287,22 @@ const ProcessDetail = (props) => {
                           className='button is-small is-warning'
                           onClick={() => {
                             setShowProcesUpdateForm(true);
+                            setShowNewStepForm(false);
                           }}
                         >
                           Modifier
                         </button>
+
+                        {!showNewStepForm && (
+                          <button
+                            className='button is-small is-info'
+                            onClick={() => {
+                              setShowNewStepForm(true);
+                            }}
+                          >
+                            Ajouter une étape
+                          </button>
+                        )}
 
                         <button
                           className='button is-small is-danger'
@@ -296,6 +313,47 @@ const ProcessDetail = (props) => {
                       </div>
                     </div>
                   </Fragment>
+                )}
+
+                {/* STEPS */}
+
+                {showNewStepForm && (
+                  <div className='block'>
+                    <form onSubmit={handleNewStepFormSubmit}>
+                      <div className='field'>
+                        <label className='label'>Contenu</label>
+
+                        <p className='control'>
+                          <input
+                            className='input is-small is-info'
+                            type='text'
+                            value={newStep.content}
+                            name='content'
+                            placeholder='Contenu'
+                            onChange={handleNewStepChange}
+                          />
+                        </p>
+                      </div>
+
+                      <div className='buttons'>
+                        <button
+                          className='button is-small is-info'
+                          type='submit'
+                        >
+                          Valider
+                        </button>
+
+                        <button
+                          className='button is-small is-warning'
+                          onClick={() => {
+                            setShowNewStepForm(false);
+                          }}
+                        >
+                          Annuler
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                 )}
 
                 {localSteps.length > 0 ? (

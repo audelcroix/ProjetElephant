@@ -11,6 +11,9 @@ const IndividualProcess = (props) => {
     >
       <div>
         <h4>{process.title}</h4>
+        <p>
+          {process.steps.length} étape{process.steps.length > 1 && "s"}
+        </p>
       </div>
     </Link>
   );
