@@ -84,7 +84,7 @@ export const login = (formData) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -122,7 +122,7 @@ export const register = (formData) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -171,7 +171,7 @@ export const loadUserNotes = () => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -199,7 +199,7 @@ export const updateNote = (formData) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -222,7 +222,7 @@ export const deleteNote = (noteToDeleteId) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -245,7 +245,7 @@ export const createNote = (formData) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -278,7 +278,7 @@ export const loadUserProcesses = () => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -306,7 +306,7 @@ export const updateProcess = (formData) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -338,7 +338,7 @@ export const createProcess = (formData) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -371,7 +371,7 @@ export const loadUserTasks = () => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -400,7 +400,7 @@ export const addNewTask = (formData) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -433,7 +433,7 @@ export const deleteTaskAndSubtasks =
         setErrorMsgs(
           err.response &&
             err.response.data &&
-            err.response.status != 404 &&
+            err.response.status !== 404 &&
             err.response.data.error_msg
             ? err.response.data.error_msg
             : ["Oops, une erreur inattendue s'est produite"]
@@ -467,7 +467,7 @@ export const finishTask =
         setErrorMsgs(
           err.response &&
             err.response.data &&
-            err.response.status != 404 &&
+            err.response.status !== 404 &&
             err.response.data.error_msg
             ? err.response.data.error_msg
             : ["Oops, une erreur inattendue s'est produite"]
@@ -501,7 +501,7 @@ export const unfinishTask =
         setErrorMsgs(
           err.response &&
             err.response.data &&
-            err.response.status != 404 &&
+            err.response.status !== 404 &&
             err.response.data.error_msg
             ? err.response.data.error_msg
             : ["Oops, une erreur inattendue s'est produite"]
@@ -537,7 +537,7 @@ export const updateTask =
         setErrorMsgs(
           err.response &&
             err.response.data &&
-            err.response.status != 404 &&
+            err.response.status !== 404 &&
             err.response.data.error_msg
             ? err.response.data.error_msg
             : ["Oops, une erreur inattendue s'est produite"]
@@ -568,7 +568,7 @@ export const addSubtask = (formData, motherTaskId) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -598,7 +598,7 @@ export const deleteSubtask = (idToDelete) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -628,7 +628,7 @@ export const finishSubtask = (idToFinish, motherTaskId) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -682,7 +682,7 @@ export const loadUserCollections = () => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]
@@ -711,7 +711,7 @@ export const createCollection = (formData) => async (dispatch) => {
       setErrorMsgs(
         err.response &&
           err.response.data &&
-          err.response.status != 404 &&
+          err.response.status !== 404 &&
           err.response.data.error_msg
           ? err.response.data.error_msg
           : ["Oops, une erreur inattendue s'est produite"]

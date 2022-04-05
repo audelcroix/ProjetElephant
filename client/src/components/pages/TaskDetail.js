@@ -27,7 +27,7 @@ import MessageBoard from "../parts/MessageBoard";
 import "moment-timezone";
 import "moment/locale/fr";
 
-import DatePicker, { registerLocale, setDefaultLocale } from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import fr from "date-fns/locale/fr";
 
@@ -188,7 +188,7 @@ const TaskDetail = (props) => {
       } else if (res && res.success) {
         setLocalSubtasks(
           localSubtasks.filter((subtask) => {
-            return subtask._id != subtaskToDeleteId;
+            return subtask._id !== subtaskToDeleteId;
           })
         );
       }
@@ -439,7 +439,7 @@ const TaskDetail = (props) => {
                 setCurrentTask({
                   ...currentTask,
                   collections: currentTask.collections.filter((collection) => {
-                    return collection._id != collectionObject._id;
+                    return collection._id !== collectionObject._id;
                   }),
                 });
               }}

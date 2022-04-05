@@ -11,9 +11,7 @@ import IndividualProcess from "./IndividualProcess";
 import PartialLoading from "./PartialLoading";
 
 const ProcessesMode = () => {
-  const { loading, loading_partial, user, processes } = useSelector(
-    (state) => state.user
-  );
+  const { loading_partial, processes } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 

@@ -86,7 +86,7 @@ const AddToCollectionForm = (props) => {
                 onChange={handleSelectChange}
               >
                 {collections.map((collection, index) => {
-                  let i = collection[props.origin].some((doc) => {
+                  collection[props.origin].some((doc) => {
                     return doc === props.targetDocumentId;
                   });
 

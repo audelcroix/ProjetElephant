@@ -171,7 +171,7 @@ const NoteDetail = (props) => {
                 setLocalNote({
                   ...localNote,
                   collections: localNote.collections.filter((collection) => {
-                    return collection._id != collectionObject._id;
+                    return collection._id !== collectionObject._id;
                   }),
                 });
               }}

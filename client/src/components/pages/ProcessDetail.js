@@ -125,7 +125,7 @@ const ProcessDetail = (props) => {
 
       setLocalSteps(
         localSteps.filter((step) => {
-          return step._id != stepToDeleteId;
+          return step._id !== stepToDeleteId;
         })
       );
     } catch (err) {
@@ -140,7 +140,7 @@ const ProcessDetail = (props) => {
 
     try {
       let stepToUpdateIndex = localSteps.findIndex((step) => {
-        return step._id == formData.stepId;
+        return step._id === formData.stepId;
       });
       const stepUpdateRes = await axios.patch(
         `http://localhost:5000/api/processes/edit_step/${formData.stepId}`,
@@ -156,6 +156,7 @@ const ProcessDetail = (props) => {
     }
   };
 
+  // es-lint
   useEffect(() => {
     const getProcess = async () => {
       try {
@@ -385,7 +386,7 @@ const ProcessDetail = (props) => {
                       ...currentProcess,
                       collections: currentProcess.collections.filter(
                         (collection) => {
-                          return collection._id != collectionObject._id;
+                          return collection._id !== collectionObject._id;
                         }
                       ),
                     });
