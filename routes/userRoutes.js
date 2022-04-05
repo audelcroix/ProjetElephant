@@ -8,7 +8,7 @@ router.route("/register").post(
     .isEmail()
     .withMessage("Cet email est invalide")
     .normalizeEmail(),
-  body("username").isLength({ min: 3, max: 55 }).trim().escape(),
+
   body("password")
     .isLength({ min: 6 })
     .withMessage("Votre mot de passe doit comporter au moins 6 caractères")

@@ -1,27 +1,11 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
-const slugify = require("slugify");
 const bcrypt = require("bcrypt");
 const { isEmail } = require("validator");
 
 const userSchema = new mongoose.Schema(
   {
-    username: {
-      type: String,
-      required: [true, "Un pseudo est nécessaire"],
-      minLength: [3, "Votre pseudo doit comporter au moins 3 caractères"],
-      maxLength: [55, "Votre pseudo doit comporter 55 caractères maximum"],
-      unique: true,
-      trim: true,
-    },
-
-    slugUsername: {
-      type: String,
-      unique: true,
-      index: true,
-    },
-
     email: {
       type: String,
       required: [true, "Un email est nécessaire"],
@@ -39,11 +23,6 @@ const userSchema = new mongoose.Schema(
       ],
       minLength: [6, "Votre mot de passe doit comporter au moins 6 caractères"],
       required: [true, "Un mot de pass est indispensable"],
-    },
-
-    avatar: {
-      type: String,
-      default: "defaultAvatar.jpg",
     },
 
     theme: {
@@ -64,11 +43,6 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-userSchema.pre("save", function (next) {
-  this.slugUsername = slugify(this.username, { lower: true });
-  next();
-});
 
 userSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt();

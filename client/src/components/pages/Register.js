@@ -25,7 +25,6 @@ const Register = (props) => {
     password: "",
     passwordConfirm: "",
     email: "",
-    username: "",
   });
 
   const handleRegisterFormChange = (event) => {
@@ -50,7 +49,6 @@ const Register = (props) => {
       dispatch(
         register({
           password: userToRegister.password,
-          username: userToRegister.username,
           email: userToRegister.email,
         })
       );
@@ -83,24 +81,6 @@ const Register = (props) => {
         <div className='box'>
           <div className='block mt-5'>
             <form onSubmit={handleRegisterFormSubmit}>
-              <div className='field'>
-                <label className='label'>Nom d'utilisateur</label>
-
-                <p className='control has-icons-left'>
-                  <input
-                    placeholder="Nom d'utilisateur"
-                    className='input is-medium is-info'
-                    type='text'
-                    value={userToRegister.username}
-                    onChange={handleRegisterFormChange}
-                    name='username'
-                  />
-                  <span className='material-icons icon is-small is-left'>
-                    person
-                  </span>
-                </p>
-              </div>
-
               <div className='field'>
                 <label className='label'>E-Mail</label>
                 <p className='control has-icons-left'>

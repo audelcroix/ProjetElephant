@@ -22,7 +22,7 @@ exports.getAllUsers = async (req, res) => {
 
 exports.registerUser = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { email, password } = req.body;
 
     let errors = validationResult(req);
 
@@ -40,7 +40,6 @@ exports.registerUser = async (req, res) => {
 
     const newUser = new User({
       password,
-      username,
       email,
     });
 
@@ -48,7 +47,7 @@ exports.registerUser = async (req, res) => {
       if (err) {
         let errorToReturn = handleMongooseDocCreationError(
           err,
-          ["email", "username"],
+          ["email"],
           "Oops! Une erreur interne est survenue lors de la création de votre profil"
         );
 

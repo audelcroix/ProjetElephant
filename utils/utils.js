@@ -25,10 +25,6 @@ exports.handleMongooseDocCreationError = (
 
   // To catch doubles in user registration
   if (err.code && err.code === 11000) {
-    if (Object.keys(err.keyValue)[0].includes("username")) {
-      error_msg.push("Ce nom d'utilisateur est déjà utilisé");
-    }
-
     if (Object.keys(err.keyValue)[0].includes("email")) {
       error_msg.push("Cet email est déjà utilisé");
     }
