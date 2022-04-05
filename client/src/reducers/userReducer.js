@@ -1,4 +1,3 @@
-import { finishSubtask } from "../actions/userActions";
 import {
   SET_LOADING,
   AUTH_ERROR,
@@ -17,18 +16,10 @@ import {
   UPDATE_TASk,
   UNFINISH_TASK,
   FINISH_TASK,
-  FINISH_SUBTASK,
-  UNFINISH_SUBTASK,
   UPDATE_NOTE,
   DELETE_NOTE,
   ADD_NOTE,
   ADD_PROCESS,
-  LOAD_PROCESS_AND_STEPS,
-  DELETE_PROCESS,
-  UPDATE_PROCESS,
-  ADD_STEP,
-  DELETE_STEP,
-  UPDATE_STEP,
   ADD_NEW_COLLECTION,
   ADD_TO_COLLECTION,
   REMOVE_FROM_COLLECTION,
@@ -239,12 +230,6 @@ export default (state = initialState, action) => {
       let treatedErrors = action.payload.map((err) => {
         return { error_msg: err, _id: uuidv4() };
       });
-
-      /* let treatedErrors = [];
-
-      action.payload.forEach((errorToTreat) => {
-        treatedErrors.push({ error_msg: errorToTreat, _id: uuidv4() });
-      }); */
 
       return {
         ...state,

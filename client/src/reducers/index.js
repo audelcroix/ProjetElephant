@@ -3,7 +3,6 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import userReducer from "./userReducer";
-//import alertReducer from "./alertReducer";
 
 const persistConfig = {
   key: "root",

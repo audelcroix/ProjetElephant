@@ -38,7 +38,6 @@ const ProcessDetail = (props) => {
     });
   };
 
-  // GERE PAS ENCORE LES ERREURS ?
   const handleProcessUpdateFormSubmit = async (event) => {
     event.preventDefault();
 

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logout, changeMode } from "../../actions/userActions";
 
 const Navbar = () => {
-  const { user } = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
 
   const [isActive, setisActive] = useState(false);
@@ -22,10 +20,6 @@ const Navbar = () => {
         aria-label='main navigation'
       >
         <div className='navbar-brand'>
-          {/* <a className="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
-    </a> */}
-
           <a
             onClick={() => {
               setisActive(!isActive);

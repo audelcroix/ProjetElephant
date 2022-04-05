@@ -13,7 +13,6 @@ export const DELETE_ALL_MSG = "DELETE_ALL_MSG";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGOUT = "LOGOUT";
 export const AUTH_ERROR = "AUTH_ERROR";
-export const USER_LOADED = "USER_LOADED";
 
 // MAIN
 export const LOAD_TASKS = "LOAD_TASKS";
@@ -32,23 +31,11 @@ export const UNFINISH_TASK = "UNFINISH_TASK";
 export const NEW_SUBTASK_ADDED = "NEW_SUBTASK_ADDED";
 export const ADD_SUBTASK = "ADD_SUBTASK";
 export const DELETE_SUBTASK = "DELETE_SUBTASK";
-export const FINISH_SUBTASK = "FINISH_SUBTASK";
-export const UNFINISH_SUBTASK = "UNFINISH_SUBTASK";
 
 // NOTES
 export const UPDATE_NOTE = "UPDATE_NOTE";
 export const DELETE_NOTE = "DELETE_NOTE";
 export const ADD_NOTE = "ADD_NOTE";
-
-// PROCESSES
-export const ADD_PROCESS = "ADD_PROCESS";
-export const LOAD_PROCESS_AND_STEPS = "LOAD_PROCESS_AND_STEPS";
-export const DELETE_PROCESS = "DELETE_PROCESS";
-export const UPDATE_PROCESS = "UPDATE_PROCESS";
-// STEPS
-export const ADD_STEP = "ADD_STEP";
-export const DELETE_STEP = "DELETE_STEP";
-export const UPDATE_STEP = "ADD_STEP";
 
 // COLLECTIONS
 export const ADD_NEW_COLLECTION = "ADD_NEW_COLLECTION";

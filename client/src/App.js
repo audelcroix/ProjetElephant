@@ -68,8 +68,6 @@ function App() {
           </PersistGate>
         </Router>
       </div>
-
-      {/* <Footer /> */}
     </Provider>
   );
 }

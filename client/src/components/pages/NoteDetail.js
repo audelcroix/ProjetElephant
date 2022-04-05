@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -25,7 +24,6 @@ const NoteDetail = (props) => {
 
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [updatedNoteContent, setUpdatedNoteContent] = useState();
-  const [noteIsUpdating, setNoteIsUpdating] = useState(false);
   const [showAddToCollectionForm, setShowAddToCollectionForm] = useState(false);
 
   useEffect(() => {

@@ -5,11 +5,9 @@ import setAuthToken from "../utils/setAuthToken";
 import {
   SET_LOADING,
   SET_LOADING_PARTIAL,
-  AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGOUT,
   CHANGE_MODE,
-  USER_LOADED,
   LOAD_NOTES,
   LOAD_PROCESSES,
   LOAD_TASKS,
@@ -20,19 +18,11 @@ import {
   FINISH_TASK,
   UNFINISH_TASK,
   ADD_SUBTASK,
-  FINISH_SUBTASK,
-  UNFINISH_SUBTASK,
   DELETE_SUBTASK,
   UPDATE_NOTE,
   DELETE_NOTE,
   ADD_NOTE,
   ADD_PROCESS,
-  LOAD_PROCESS_AND_STEPS,
-  DELETE_PROCESS,
-  UPDATE_PROCESS,
-  ADD_STEP,
-  DELETE_STEP,
-  UPDATE_STEP,
   ADD_NEW_COLLECTION,
   ADD_TO_COLLECTION,
   REMOVE_FROM_COLLECTION,
@@ -269,8 +259,6 @@ export const createNote = (formData) => async (dispatch) => {
 /////////////////
 
 // Load user's processes
-// POUR UN PROCESS ON CHARGE D'ABORD LA LISTE
-// PUIS LE USER CLIC SUR UN PROCESS ET UNE AUTRE FONCTION LE CHARGERA
 export const loadUserProcesses = () => async (dispatch) => {
   try {
     dispatch(setLoadingPartial(true));
@@ -308,8 +296,6 @@ export const updateProcess = (formData) => async (dispatch) => {
       { description: formData.description, title: formData.title },
       config
     );
-
-    //dispatch({ type: UPDATE_PROCESS, payload: updatedProcessRes.data });
 
     return {
       success: true,
@@ -368,8 +354,6 @@ export const createProcess = (formData) => async (dispatch) => {
 /////////////////
 
 // Load user's tasks
-// POUR UNE TACHE ON CHARGE LA LISTE ET LES SOUS TACHES
-// PUIS LE USER CLIC SUR UNE TACHE ET ON FAIT APPARAITRE LES SOUS TACHES
 export const loadUserTasks = () => async (dispatch) => {
   try {
     dispatch(setLoadingPartial(true));
@@ -651,7 +635,6 @@ export const finishSubtask = (idToFinish, motherTaskId) => async (dispatch) => {
       )
     );
 
-    // utile pour le tableau de bord
     dispatch(setLoadingPartial(false));
     return { success: false, error_msg: err.response.data.error_msg };
   }
@@ -664,7 +647,6 @@ export const unfinishSubtask = (idToUnfinish) => async (dispatch) => {
       config
     );
 
-    // utile pour le tableau de bord
     return {
       success: true,
       msg: subtaskToUnfinish.data.msg,
@@ -681,9 +663,6 @@ export const unfinishSubtask = (idToUnfinish) => async (dispatch) => {
 /////////////////
 
 // Load user's collections
-// POUR UNE COLLEC ON CHARGE D'ABORD LA LISTE
-// PUIS LE USER CLIC SUR UNE COLLEC ET UNE AUTRE FONCTION LE CHARGERA
-// EN DETAILS LES ITEMS ASSOCIES
 export const loadUserCollections = () => async (dispatch) => {
   try {
     dispatch(setLoadingPartial(true));

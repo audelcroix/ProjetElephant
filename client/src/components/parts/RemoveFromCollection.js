@@ -13,7 +13,6 @@ import IndividualCollection from "./IndividualCollection";
 const RemoveFromCollection = (props) => {
   const dispatch = useDispatch();
   const { origin, targetDocumentId, currentCollections } = props;
-  const { loading, collections } = useSelector((state) => state.user);
 
   const handleRemoveFromCollectionDemand = async (collectionId) => {
     try {

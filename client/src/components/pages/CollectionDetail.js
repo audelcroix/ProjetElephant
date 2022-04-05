@@ -24,6 +24,7 @@ const CollectionDetail = (props) => {
 
   const [showCollectionUpdateForm, setShowCollectionUpdateForm] =
     useState(false);
+
   const [updatedCollection, setUpdatedCollection] = useState({
     title: "",
     description: "",
@@ -44,6 +45,7 @@ const CollectionDetail = (props) => {
           title: collectionRes.data.collectionComplete.title,
           description: collectionRes.data.collectionComplete.description,
         });
+
         dispatch(setLoading(false));
       } catch (err) {
         dispatch(
@@ -107,7 +109,7 @@ const CollectionDetail = (props) => {
     try {
       dispatch(setLoading(true));
 
-      const collectionDeleteRes = await axios.delete(
+      await axios.delete(
         `http://localhost:5000/api/collections/delete_collection/${currentCollection._id}`
       );
 
