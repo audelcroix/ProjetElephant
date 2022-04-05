@@ -19,10 +19,7 @@ exports.createNote = async (req, res) => {
     } */
 
     let errors = validationResult(req);
-    console.log("HERE!!!");
     if (!errors.isEmpty()) {
-      console.log("HERE ERR!!!");
-
       errors = errors.array();
 
       let error_msg = [];
@@ -33,16 +30,11 @@ exports.createNote = async (req, res) => {
 
       throw { error_msg };
     }
-    console.log("HERE!!!");
 
     const newNote = new Note({ content, user: req.user });
-    console.log("HERE!!!");
-    console.log(newNote);
 
     newNote.save((err, newNote) => {
       if (err) {
-        console.log("HERE ERR 2!!!");
-
         let errorToReturn = handleMongooseDocCreationError(
           err,
           ["content", "user"],
@@ -54,19 +46,14 @@ exports.createNote = async (req, res) => {
           .json({ error_msg: errorToReturn.error_msg });
       }
 
-      console.log("HERE F!!!");
-
       return res.status(200).json({ msg: "Nouvelle note ajoutée", newNote });
     });
   } catch (err) {
-    console.log(err);
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["content", "user"],
       "Oops! Une erreur interne est survenue lors de la création de la nouvelle note"
     );
-
-    console.log("HERE ERR F!!!");
 
     return res
       .status(errorToReturn.code)
@@ -275,21 +262,16 @@ exports.deleteNote = async (req, res) => {
 };
 
 exports.testnotes = async (req, res) => {
-  console.log("HERE!!!");
   return res.status(200).json({ notes: [], msg: "GRUDU get!!" });
 };
 
 exports.testpost = async (req, res) => {
-  console.log("HERE!!!");
   return res.status(200).json({ notes: [], msg: "GRUDU post!!" });
 };
 
 // Si il y a une page notedetail, il faudra retirer le populate des collections
 exports.getAllUserNotes = async (req, res) => {
-  console.log("HERE!!! I BEGIN");
-
   try {
-    console.log(req.user.id);
     const userToGetNotesId = req.user.id;
 
     const userToGetNotes = await User.findById(userToGetNotesId);

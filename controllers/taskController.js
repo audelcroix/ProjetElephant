@@ -523,7 +523,6 @@ exports.updateSubtask = async (req, res) => {
     if (targetSubtask.isDone === true) {
       throw { error_msg: "Impossible de modifier une sous-tâche terminée" };
     }
-    console.log(limitDate);
 
     if (limitDate) {
       // Validate the date. Date must be in the past and valid
@@ -567,8 +566,6 @@ exports.updateSubtask = async (req, res) => {
       ["description", "title"],
       "Oops! Une erreur interne est survenue lors de la mise à jour de cette tâche"
     );
-
-    console.log(err);
 
     return res
       .status(errorToReturn.code)

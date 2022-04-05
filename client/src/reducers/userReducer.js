@@ -68,7 +68,7 @@ export default (state = initialState, action) => {
 
     case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
-      console.log(action.payload.token);
+
       return {
         ...state,
         token: action.payload.token,
@@ -101,9 +101,6 @@ export default (state = initialState, action) => {
       };
 
     case CHANGE_MODE:
-      console.log(state);
-      console.log(action.payload);
-
       return {
         ...state,
         mode: action.payload,
@@ -116,7 +113,6 @@ export default (state = initialState, action) => {
       };
 
     case LOAD_NOTES:
-      console.log(state);
       return {
         ...state,
         notes: action.payload.notes,
@@ -213,9 +209,6 @@ export default (state = initialState, action) => {
       };
 
     case ADD_NOTE:
-      console.log(state);
-      console.log(action.payload.newNote);
-      console.log(state.notes);
       return { ...state, notes: [...state.notes, action.payload.newNote] };
 
     case ADD_PROCESS:
@@ -243,9 +236,6 @@ export default (state = initialState, action) => {
       };
 
     case SET_ERROR_MSGS:
-      console.log(action.payload);
-      console.log(action.payload[0]);
-      console.log(action.payload.length);
       let treatedErrors = action.payload.map((err) => {
         return { error_msg: err, _id: uuidv4() };
       });
@@ -253,13 +243,8 @@ export default (state = initialState, action) => {
       /* let treatedErrors = [];
 
       action.payload.forEach((errorToTreat) => {
-        console.log({ error_msg: errorToTreat, _id: uuidv4() });
         treatedErrors.push({ error_msg: errorToTreat, _id: uuidv4() });
       }); */
-
-      console.log(treatedErrors);
-
-      console.log([...state.error_msgs, ...treatedErrors]);
 
       return {
         ...state,

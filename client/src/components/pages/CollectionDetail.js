@@ -38,8 +38,6 @@ const CollectionDetail = (props) => {
           `http://localhost:5000/api/collections/get_collection_complete/${collectionId}`
         );
 
-        console.log(collectionRes);
-
         setCurrentCollection(collectionRes.data.collectionComplete);
 
         setUpdatedCollection({
@@ -48,7 +46,6 @@ const CollectionDetail = (props) => {
         });
         dispatch(setLoading(false));
       } catch (err) {
-        console.log(err.response.data.error_msg);
         dispatch(
           setErrorMsgs(
             err.response && err.response.data.error_msg
@@ -108,7 +105,6 @@ const CollectionDetail = (props) => {
 
   const handleDeleteCollection = async () => {
     try {
-      console.log(currentCollection._id);
       dispatch(setLoading(true));
 
       const collectionDeleteRes = await axios.delete(

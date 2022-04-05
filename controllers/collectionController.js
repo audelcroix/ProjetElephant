@@ -56,9 +56,6 @@ exports.createCollection = async (req, res) => {
       "Oops! Une erreur interne est survenue lors de la création de la nouvelle collection"
     );
 
-    /* console.log(errorToReturn.error_msg);
-    console.log(errorToReturn.error_msg.length); */
-
     return res
       .status(errorToReturn.code)
       .json({ error_msg: errorToReturn.error_msg });
@@ -209,7 +206,6 @@ exports.deleteCollection = async (req, res) => {
 
 exports.editCollection = async (req, res) => {
   try {
-    console.log("HERE COLL");
     const targetCollectionId = req.params.collectionId;
     const { title, description } = req.body;
 
@@ -252,8 +248,6 @@ exports.editCollection = async (req, res) => {
             "Oops! Une erreur interne est survenue lors de la mise à jour de cette collection"
           );
 
-          console.log(errorToReturn);
-
           return res
             .status(errorToReturn.code)
             .json({ error_msg: errorToReturn.error_msg });
@@ -265,7 +259,6 @@ exports.editCollection = async (req, res) => {
       }
     );
   } catch (err) {
-    console.log(err);
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["description", "title"],

@@ -77,15 +77,10 @@ export const setLoadingPartial =
 export const login = (formData) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    console.log("LOGIN!!!");
-    const loginRes = await axios.post("/api/users/login", formData, config);
-    console.log("LOGIN!!!2");
 
-    console.log(loginRes);
+    const loginRes = await axios.post("/api/users/login", formData, config);
 
     const token = loginRes.data.token; // "token" comes from the back end
-    console.log(token);
-    console.log(loginRes.data.user);
     setAuthToken(token);
 
     dispatch({ type: LOGIN_SUCCESS, payload: loginRes.data });
@@ -95,9 +90,6 @@ export const login = (formData) => async (dispatch) => {
 
     dispatch(setLoading(false));
   } catch (err) {
-    console.log(err);
-    console.log(err.response, err.response.data);
-
     dispatch(
       setErrorMsgs(
         err.response &&
@@ -116,19 +108,13 @@ export const login = (formData) => async (dispatch) => {
 // Register user
 export const register = (formData) => async (dispatch) => {
   try {
-    console.log("here 1");
     dispatch(setLoading(true));
-    console.log("here 2");
 
     const registerRes = await axios.post(
       "/api/users/register",
       formData,
       config
     );
-    console.log("here 3");
-
-    console.log(registerRes);
-    console.log("here 4");
 
     const token = registerRes.data.token; // "token" vient du back end
 
@@ -159,7 +145,6 @@ export const register = (formData) => async (dispatch) => {
 
 // Logout user
 export const logout = () => (dispatch) => {
-  console.log("logout");
   //dispatch({ type: REMOVE_ALL_ALERTS });
   dispatch({ type: LOGOUT });
 };
@@ -184,16 +169,10 @@ export const changeMode =
 export const loadUserNotes = () => async (dispatch) => {
   try {
     dispatch(setLoadingPartial(true));
-    console.log("BEGIN");
     const loadNotesRes = await axios.get("/api/notes/get_all_notes");
 
-    console.log(loadNotesRes);
-    console.log(loadNotesRes.data);
-    //console.log(typeof loadNotesRes.data);
     const notes = loadNotesRes.data.notes;
     const msg = loadNotesRes.data.msg;
-
-    console.log(notes);
 
     dispatch({ type: LOAD_NOTES, payload: { notes, msg } });
     dispatch(setLoadingPartial(false));
@@ -263,26 +242,15 @@ export const deleteNote = (noteToDeleteId) => async (dispatch) => {
 };
 
 export const createNote = (formData) => async (dispatch) => {
-  console.log("BEGIN");
   try {
-    console.log("JALON 1");
-
     const createNoteRes = await axios.post(
       "/api/notes/new_note",
       formData,
       config
     );
 
-    console.log("JALON 2");
-
-    console.log(createNoteRes);
-    console.log(createNoteRes.data);
-
     dispatch({ type: ADD_NOTE, payload: createNoteRes.data });
   } catch (err) {
-    console.log(err);
-    console.log("JALON ERR");
-
     dispatch(
       setErrorMsgs(
         err.response &&
@@ -310,8 +278,6 @@ export const loadUserProcesses = () => async (dispatch) => {
     const loadProcessesRes = await axios.get(
       "/api/processes/get_all_processes"
     );
-
-    console.log(loadProcessesRes);
 
     const processes = loadProcessesRes.data.processes;
     const msg = loadProcessesRes.data.msg;
@@ -705,9 +671,6 @@ export const unfinishSubtask = (idToUnfinish) => async (dispatch) => {
       unfinishedSubtask: subtaskToUnfinish.data.unfinishedSubtask,
     };
   } catch (err) {
-    console.log(err);
-    console.log(err.response);
-
     dispatch(setLoadingPartial(false));
     return { success: false, error_msg: err.response.data.error_msg };
   }
@@ -728,8 +691,6 @@ export const loadUserCollections = () => async (dispatch) => {
     const loadCollectionsRes = await axios.get(
       "/api/collections/get_all_collections"
     );
-
-    console.log(loadCollectionsRes);
 
     const collections = loadCollectionsRes.data.collections;
     const msg = loadCollectionsRes.data.msg;
@@ -792,9 +753,6 @@ export const addToCollection = (updatedCollection) => (dispatch) => {
 
 // MESSAGES
 export const setErrorMsgs = (error_msgs) => (dispatch) => {
-  console.log(error_msgs);
-  console.log(error_msgs.length);
-  console.log([...error_msgs]);
   dispatch({ type: SET_ERROR_MSGS, payload: [...error_msgs] });
 };
 

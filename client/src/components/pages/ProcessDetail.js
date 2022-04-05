@@ -137,8 +137,8 @@ const ProcessDetail = (props) => {
   };
 
   const updateStepFunction = async (formData) => {
-    console.log(formData);
     dispatch(setLoading(true));
+
     try {
       let stepToUpdateIndex = localSteps.findIndex((step) => {
         return step._id == formData.stepId;

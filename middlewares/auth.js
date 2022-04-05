@@ -32,10 +32,7 @@ exports.protect = async (req, res, next) => {
 
     // 3) Check if user still exists
     // user is nested in the json sent back to here
-    const currentUser = await User.findById(user.user.id).select("-password"); // populate sera probablement necessaire pour le front end
-    //.populate("id")
-
-    //console.log(currentUser);
+    const currentUser = await User.findById(user.user.id).select("-password");
 
     // Check if token was not altered
     if (!currentUser) {
@@ -43,14 +40,6 @@ exports.protect = async (req, res, next) => {
         .status(401)
         .json({ error_msg: "Il semble que votre profil n'existe plus" });
     }
-
-    // 4) Check if user changed password after the token was issued
-    /*   if (currentUser.changedPasswordAfter(decoded.iat)) {
-      return next(
-        new AppError("User recently changed password! Please log in again.", 401)
-      );
-    } */
-    // Not used in this version
 
     // GRANT ACCESS TO PROTECTED ROUTE
     req.user = currentUser;

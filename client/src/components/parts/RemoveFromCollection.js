@@ -51,8 +51,6 @@ const RemoveFromCollection = (props) => {
         config
       );
 
-      console.log(removeFromCollectionRes);
-
       dispatch(
         removeFromCollection(removeFromCollectionRes.data.updatedCollection)
       );

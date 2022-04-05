@@ -99,14 +99,6 @@ exports.loginUser = async (req, res) => {
       throw { error_msg };
     }
 
-    /* if (!email) {
-      throw { error_msg: "Veuillez entrer un email" };
-    }
-
-    if (!password) {
-      throw { error_msg: "Veuillez entrer un mot de passe" };
-    } */
-    console.log(email, password);
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -130,7 +122,6 @@ exports.loginUser = async (req, res) => {
       }
     );
 
-    //res.cookie("jwt", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
     return res.status(200).json({ token, user });
   } catch (err) {
     if (err.error_msg) {

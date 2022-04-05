@@ -55,7 +55,6 @@ const CollectionsMode = () => {
 
       dispatch(setLoading(false));
     } catch (err) {
-      console.log(err);
       dispatch(setErrorMsgs([err.response.data.error_msg]));
       dispatch(setLoading(false));
     }

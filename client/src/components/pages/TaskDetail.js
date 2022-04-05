@@ -141,7 +141,6 @@ const TaskDetail = (props) => {
 
   // Load the task and its subtasks
   useEffect(() => {
-    console.log("GRUDU");
     const getTask = async () => {
       try {
         dispatch(setLoading(true));

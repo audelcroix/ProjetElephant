@@ -11,32 +11,6 @@ exports.createProcess = async (req, res) => {
   try {
     const { description, title } = req.body;
 
-    /* if (description) {
-      if (description.length > 500) {
-        throw {
-          error_msg: "La description ne peut comporter plus de 500 caractères",
-        };
-      }
-
-      if (description.length < 3) {
-        throw {
-          error_msg: "La description ne peut comporter moins de 3 caractères",
-        };
-      }
-    }
-
-    if (!title) {
-      throw {
-        error_msg: "Le titre est nécessaire",
-      };
-    }
-
-    if (title.length < 3 || title.length > 140) {
-      throw {
-        error_msg: "Le titre doit comporter entre 3 et 140 caractères",
-      };
-    } */
-
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -47,8 +21,7 @@ exports.createProcess = async (req, res) => {
       errors.forEach((el) => {
         error_msg.push(el.msg);
       });
-      console.log(error_msg);
-      console.log(description);
+
       throw { error_msg };
     }
 
@@ -212,24 +185,6 @@ exports.editProcess = async (req, res) => {
       throw { error_msg: "Ce processus est introuvable" };
     }
 
-    /* if (description && description.length > 500) {
-      throw {
-        error_msg: "La description ne peut comporter plus de 500 caractères",
-      };
-    }
-
-    if (!title) {
-      throw {
-        error_msg: "Le titre est nécessaire",
-      };
-    }
-
-    if (title.length < 3 || title.length > 140) {
-      throw {
-        error_msg: "Le titre doit comporter entre 3 et 140 caractères",
-      };
-    } */
-
     if (targetProcess.user != req.user.id) {
       throw {
         error_msg: "Vous n'avez pas la permission de modifier ce processus",
@@ -337,13 +292,6 @@ exports.createStep = async (req, res) => {
         error_msg: "Vous n'avez pas la permission de modifier ce processus",
       };
     }
-
-    /* if (!content || content.length > 500 || content.length < 3) {
-      throw {
-        error_msg:
-          "Le contenu est nécessaire et doit comporter entre 3 et 500 caractères",
-      };
-    } */
 
     let errors = validationResult(req);
 
@@ -466,13 +414,6 @@ exports.editStep = async (req, res) => {
       };
     }
 
-    /* if (!content || content.length > 500 || content.length < 3) {
-      throw {
-        error_msg:
-          "Le contenu est nécessaire et doit comporter entre 3 et 500 caractères",
-      };
-    } */
-
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -508,22 +449,6 @@ exports.editStep = async (req, res) => {
       }
     );
   } catch (err) {
-    /* let error_msg = [];
-
-    if (err.error_msg) {
-      error_msg.push(err.error_msg);
-    }
-
-    if (error_msg.length < 1) {
-      res.status(500).json({
-        error_msg: [
-          "Oops! Une erreur interne est survenue lors de la mise à jour de cette étape",
-        ],
-      });
-    } else {
-      res.status(401).json({ error_msg });
-    } */
-
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["content"],
@@ -600,23 +525,6 @@ exports.addProcessToCollection = async (req, res) => {
       updatedCollection,
     });
   } catch (err) {
-    /* let error_msg = [];
-
-    if (err.error_msg) {
-      error_msg.push(err.error_msg);
-    }
-
-    if (error_msg.length < 1) {
-      res.status(500).json({
-        error_msg: [
-          "Oops! Une erreur interne est survenue lors de l'ajout à la collection",
-        ],
-      });
-    } else {
-      res.status(401).json({ error_msg });
-
-    } */
-
     let errorToReturn = handleMongooseDocCreationError(
       err,
       [],
