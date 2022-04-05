@@ -7,7 +7,6 @@ const { handleMongooseDocCreationError } = require("./../utils/utils");
 
 const { validationResult } = require("express-validator");
 
-// Not used
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.find().select("-password");

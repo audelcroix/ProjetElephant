@@ -9,20 +9,11 @@ const cors = require("cors");
 
 const app = express();
 
-//app.use(express.static(path.resolve(__dirname, "./client/build")));
-
 const dbUrl =
   process.env.NODE_ENV == "production"
     ? process.env.DB_URL
     : "mongodb://localhost:27017/elephantDB";
 
-/* const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions)); */
 app.use(cors());
 
 const PORT = process.env.PORT || 5000;
@@ -30,13 +21,6 @@ const PORT = process.env.PORT || 5000;
 // for the requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-/////////////////////////////////////////
-/* app.use(function (req, res, next) {
-  console.log("A REQUEST HAS BEEN RECEIVED");
-  console.log("Time:", Date.now());
-  next();
-}); */
 
 // ROUTES
 app.use("/api/users", require("./routes/userRoutes"));

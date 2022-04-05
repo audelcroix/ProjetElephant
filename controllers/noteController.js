@@ -10,14 +10,6 @@ exports.createNote = async (req, res) => {
   try {
     const { content } = req.body;
 
-    // Check if content is valid
-    /* if (!content || content.length < 3 || content.length > 300) {
-      throw {
-        error_msg:
-          "Le contenu d'une note doit être compris entre 3 et 300 caractères",
-      };
-    } */
-
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
       errors = errors.array();
@@ -117,14 +109,6 @@ exports.editNote = async (req, res) => {
         error_msg: "Vous n'avez pas la permission de modifier cette note",
       };
     }
-
-    // Check if content is valid
-    /* if (!content || content.length < 3 || content.length > 300) {
-      throw {
-        error_msg:
-          "Le contenu d'une note doit être compris entre 3 et 300 caractères",
-      };
-    } */
 
     let errors = validationResult(req);
 
@@ -269,7 +253,6 @@ exports.testpost = async (req, res) => {
   return res.status(200).json({ notes: [], msg: "GRUDU post!!" });
 };
 
-// Si il y a une page notedetail, il faudra retirer le populate des collections
 exports.getAllUserNotes = async (req, res) => {
   try {
     const userToGetNotesId = req.user.id;

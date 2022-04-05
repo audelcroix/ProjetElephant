@@ -22,22 +22,6 @@ const taskSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// FONCTIONNE MAIS FAIT UN APPEL EVITABLE A LA BASE DE DONNEES
-/* taskSchema.pre("save", function (next) {
-  const now = new Date();
-
-  if (this.limitDate < now) {
-    // Limit date cannot be in the past
-    const dateErr = new Error();
-    dateErr.error_msg = "La date doit être dans le futur";
-    next(dateErr);
-  } else {
-    next();
-  }
-
-  next();
-}); */
-
 const Task = mongoose.model("Task", taskSchema);
 
 module.exports = Task;

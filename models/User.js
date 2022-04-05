@@ -41,7 +41,6 @@ const userSchema = new mongoose.Schema(
       required: [true, "Un mot de pass est indispensable"],
     },
 
-    // a verifier suivant le dossier statics
     avatar: {
       type: String,
       default: "defaultAvatar.jpg",
@@ -53,8 +52,6 @@ const userSchema = new mongoose.Schema(
       default: "spring",
     },
 
-    // Pas utilisés
-    // ON VA FINALEMENT CHARGER DE PUIS LA BDD ET PAS PAR UN POPULATE
     tasks: [{ type: ObjectId, ref: "Task" }],
 
     processes: [{ type: ObjectId, ref: "Process" }],
@@ -68,7 +65,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// valider si user deja existant avec le slug et pas le username
 userSchema.pre("save", function (next) {
   this.slugUsername = slugify(this.username, { lower: true });
   next();
