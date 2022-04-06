@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
-
+const xss = require("xss-clean");
+const mongoSanitize = require("express-mongo-sanitize");
 const path = require("path");
 
 require("dotenv").config({ path: "./config/.env" });
@@ -38,6 +39,12 @@ const PORT = process.env.PORT || 5000;
 // Body parser to read data from the body of the requests into req.body
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "10kb" }));
+
+// Data sanitization against no-sql query injection
+app.use(mongoSanitize());
+
+// Data sanitization against XSS attacks
+app.use(xss());
 
 // ROUTES
 app.use("/api/users", require("./routes/userRoutes"));
