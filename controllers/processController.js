@@ -32,7 +32,7 @@ exports.createProcess = async (req, res) => {
         let errorToReturn = handleMongooseDocCreationError(
           err,
           ["description", "title", "user"],
-          "Oops! Une erreur interne est survenue lors de la création du nouveau processus"
+          "Nous sommes désolés, une erreur interne est survenue lors de la création du nouveau processus"
         );
 
         return res
@@ -48,7 +48,7 @@ exports.createProcess = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["description", "title", "user"],
-      "Oops! Une erreur interne est survenue lors de la création du nouveau processus"
+      "Nous sommes désolés, une erreur interne est survenue lors de la création du nouveau processus"
     );
 
     return res
@@ -86,7 +86,7 @@ exports.getProcessSteps = async (req, res) => {
     if (error_msg.length < 1) {
       res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du chargement de ce processus",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement de ce processus",
         ],
       });
     } else {
@@ -165,7 +165,7 @@ exports.deleteProcess = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la suppression de ce processus",
+          "Nous sommes désolés, une erreur interne est survenue lors de la suppression de ce processus",
         ],
       });
     } else {
@@ -214,7 +214,7 @@ exports.editProcess = async (req, res) => {
           let errorToReturn = handleMongooseDocCreationError(
             err,
             ["description", "title"],
-            "Oops! Une erreur interne est survenue lors de la mise à jour de ce processus"
+            "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de ce processus"
           );
 
           return res
@@ -231,7 +231,7 @@ exports.editProcess = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["description", "title"],
-      "Oops! Une erreur interne est survenue lors de la mise à jour de ce processus"
+      "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de ce processus"
     );
 
     return res
@@ -267,7 +267,7 @@ exports.getAllUserProcesses = async (req, res) => {
     if (error_msg.length < 1) {
       res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du chargement de vos processus",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement de vos processus",
         ],
       });
     } else {
@@ -326,7 +326,7 @@ exports.createStep = async (req, res) => {
           let errorToReturn = handleMongooseDocCreationError(
             err,
             ["description", "title"],
-            "Oops! Une erreur interne est survenue lors de la création de la nouvelle étape"
+            "Nous sommes désolés, une erreur interne est survenue lors de la création de la nouvelle étape"
           );
 
           return res
@@ -343,7 +343,7 @@ exports.createStep = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["content", "title"],
-      "Oops! Une erreur interne est survenue lors de la création de la nouvelle étape"
+      "Nous sommes désolés, une erreur interne est survenue lors de la création de la nouvelle étape"
     );
 
     return res
@@ -388,7 +388,7 @@ exports.deleteStep = async (req, res) => {
     if (error_msg.length < 1) {
       res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la suppression de cette étape",
+          "Nous sommes désolés, une erreur interne est survenue lors de la suppression de cette étape",
         ],
       });
     } else {
@@ -437,7 +437,7 @@ exports.editStep = async (req, res) => {
           let errorToReturn = handleMongooseDocCreationError(
             err,
             ["content"],
-            "Oops! Une erreur interne est survenue lors de la mise à jour de cette étape"
+            "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de cette étape"
           );
 
           return res
@@ -452,7 +452,7 @@ exports.editStep = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["content"],
-      "Oops! Une erreur interne est survenue lors de la mise à jour de cette étape"
+      "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de cette étape"
     );
 
     return res
@@ -528,7 +528,7 @@ exports.addProcessToCollection = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       [],
-      "Oops! Une erreur interne est survenue lors de l'ajout à la collection"
+      "Nous sommes désolés, une erreur interne est survenue lors de l'ajout à la collection"
     );
 
     return res
@@ -598,7 +598,7 @@ exports.removeFromCollection = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       [],
-      "Oops! Une erreur interne est survenue lors du retrait de ce processus de la collection"
+      "Nous sommes désolés, une erreur interne est survenue lors du retrait de ce processus de la collection"
     );
 
     return res

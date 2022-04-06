@@ -1,7 +1,7 @@
 exports.handleMongooseDocCreationError = (
   err,
   thingsToCheck = [],
-  defaultMsg = "Oops! Une erreur interne est survenue"
+  defaultMsg = "Nous sommes désolés, une erreur interne est survenue"
 ) => {
   let error_msg = [];
 

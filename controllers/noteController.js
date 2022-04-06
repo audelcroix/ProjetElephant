@@ -30,7 +30,7 @@ exports.createNote = async (req, res) => {
         let errorToReturn = handleMongooseDocCreationError(
           err,
           ["content", "user"],
-          "Oops! Une erreur interne est survenue lors de la création de la nouvelle note"
+          "Nous sommes désolés, une erreur interne est survenue lors de la création de la nouvelle note"
         );
 
         return res
@@ -44,7 +44,7 @@ exports.createNote = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["content", "user"],
-      "Oops! Une erreur interne est survenue lors de la création de la nouvelle note"
+      "Nous sommes désolés, une erreur interne est survenue lors de la création de la nouvelle note"
     );
 
     return res
@@ -83,7 +83,7 @@ exports.getNote = async (req, res) => {
     if (error_msg.length < 1) {
       res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du chargement de la note",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement de la note",
         ],
       });
     } else {
@@ -133,7 +133,7 @@ exports.editNote = async (req, res) => {
           let errorToReturn = handleMongooseDocCreationError(
             err,
             ["content", "user"],
-            "Oops! Une erreur interne est survenue lors de la mise à jour de la note"
+            "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de la note"
           );
 
           return res
@@ -156,7 +156,7 @@ exports.editNote = async (req, res) => {
     if (error_msg.length < 1) {
       res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la création de la nouvelle note",
+          "Nous sommes désolés, une erreur interne est survenue lors de la création de la nouvelle note",
         ],
       });
     } else {
@@ -212,7 +212,7 @@ exports.deleteNote = async (req, res) => {
         let errorToReturn = handleMongooseDocCreationError(
           err,
           ["user"],
-          "Oops! Une erreur interne est survenue lors de la création de la suppression de la note"
+          "Nous sommes désolés, une erreur interne est survenue lors de la création de la suppression de la note"
         );
 
         return res
@@ -236,7 +236,7 @@ exports.deleteNote = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la suppression de la note",
+          "Nous sommes désolés, une erreur interne est survenue lors de la suppression de la note",
         ],
       });
     } else {
@@ -291,7 +291,7 @@ exports.getAllUserNotes = async (req, res) => {
     if (error_msg.length < 1) {
       res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du chargement de vos notes",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement de vos notes",
         ],
       });
     } else {
@@ -368,7 +368,7 @@ exports.addNoteToCollection = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de l'ajout à la collection",
+          "Nous sommes désolés, une erreur interne est survenue lors de l'ajout à la collection",
         ],
       });
     } else {
@@ -442,7 +442,7 @@ exports.removeNoteFromCollection = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du retrait de cette note de la collection",
+          "Nous sommes désolés, une erreur interne est survenue lors du retrait de cette note de la collection",
         ],
       });
     } else {

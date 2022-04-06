@@ -52,7 +52,7 @@ exports.createSimpleTask = async (req, res) => {
         let errorToReturn = handleMongooseDocCreationError(
           err,
           ["description", "title", "user"],
-          "Oops! Une erreur interne est survenue lors de la création du nouveau processus"
+          "Nous sommes désolés, une erreur interne est survenue lors de la création du nouveau processus"
         );
 
         return res
@@ -66,7 +66,7 @@ exports.createSimpleTask = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["limitDate", "content", "user"],
-      "Oops! Une erreur interne est survenue lors de la création de la nouvelle tâche"
+      "Nous sommes désolés, une erreur interne est survenue lors de la création de la nouvelle tâche"
     );
 
     return res
@@ -149,7 +149,7 @@ exports.createSubtask = async (req, res) => {
           let errorToReturn = handleMongooseDocCreationError(
             err,
             ["description", "title"],
-            "Oops! Une erreur interne est survenue lors de la mise à jour de cette tâche"
+            "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de cette tâche"
           );
 
           return res
@@ -172,7 +172,7 @@ exports.createSubtask = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la création de cette sous-tâche",
+          "Nous sommes désolés, une erreur interne est survenue lors de la création de cette sous-tâche",
         ],
       });
     } else {
@@ -226,7 +226,7 @@ exports.finishTask = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la finalisation de cette tâche",
+          "Nous sommes désolés, une erreur interne est survenue lors de la finalisation de cette tâche",
         ],
       });
     } else {
@@ -282,7 +282,7 @@ exports.unfinishTask = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la définalisation de cette tâche",
+          "Nous sommes désolés, une erreur interne est survenue lors de la définalisation de cette tâche",
         ],
       });
     } else {
@@ -338,7 +338,7 @@ exports.finishSubtask = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la finalisation de cette sous-tâche",
+          "Nous sommes désolés, une erreur interne est survenue lors de la finalisation de cette sous-tâche",
         ],
       });
     } else {
@@ -394,7 +394,7 @@ exports.unfinishSubtask = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la définalisation de cette sous-tâche",
+          "Nous sommes désolés, une erreur interne est survenue lors de la définalisation de cette sous-tâche",
         ],
       });
     } else {
@@ -462,7 +462,7 @@ exports.updateTaskSimple = async (req, res) => {
           let errorToReturn = handleMongooseDocCreationError(
             err,
             ["limitDate", "user", "content"],
-            "Oops! Une erreur interne est survenue lors de la mise à jour de cette tâche"
+            "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de cette tâche"
           );
 
           return res
@@ -479,7 +479,7 @@ exports.updateTaskSimple = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["limitDate", "user", "content"],
-      "Oops! Une erreur interne est survenue lors de la mise à jour de cette tâche"
+      "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de cette tâche"
     );
 
     return res
@@ -547,7 +547,7 @@ exports.updateSubtask = async (req, res) => {
           let errorToReturn = handleMongooseDocCreationError(
             err,
             ["description", "title"],
-            "Oops! Une erreur interne est survenue lors de la mise à jour de cette sous-tâche"
+            "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de cette sous-tâche"
           );
 
           return res
@@ -564,7 +564,7 @@ exports.updateSubtask = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["description", "title"],
-      "Oops! Une erreur interne est survenue lors de la mise à jour de cette tâche"
+      "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de cette tâche"
     );
 
     return res
@@ -631,7 +631,7 @@ exports.deleteSubtask = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la suppression de cette sous-tâche",
+          "Nous sommes désolés, une erreur interne est survenue lors de la suppression de cette sous-tâche",
         ],
       });
     } else {
@@ -704,7 +704,7 @@ exports.deleteTask = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la suppression de cette tâche",
+          "Nous sommes désolés, une erreur interne est survenue lors de la suppression de cette tâche",
         ],
       });
     } else {
@@ -743,7 +743,7 @@ exports.getTaskSimple = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du chargement de cette tâche",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement de cette tâche",
         ],
       });
     } else {
@@ -783,7 +783,7 @@ exports.getTaskAndSubtasks = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du chargement de cette tâche",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement de cette tâche",
         ],
       });
     } else {
@@ -834,7 +834,7 @@ exports.loadSubtasks = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du chargement de cette tâche",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement de cette tâche",
         ],
       });
     } else {
@@ -879,7 +879,7 @@ exports.getAllUserTasks = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du chargement de vos tâches",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement de vos tâches",
         ],
       });
     } else {
@@ -956,7 +956,7 @@ exports.addTaskToCollection = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de l'ajout à la collection",
+          "Nous sommes désolés, une erreur interne est survenue lors de l'ajout à la collection",
         ],
       });
     } else {
@@ -1030,7 +1030,7 @@ exports.removeFromCollection = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du retrait de cette tâche de la collection",
+          "Nous sommes désolés, une erreur interne est survenue lors du retrait de cette tâche de la collection",
         ],
       });
     } else {

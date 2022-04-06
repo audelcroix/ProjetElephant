@@ -14,7 +14,7 @@ exports.getAllUsers = async (req, res) => {
   } catch (err) {
     return res.status(500).json({
       error_msg: [
-        "Oops! Une erreur interne s'est produite lors du chargement des utilisateurs...",
+        "Nous sommes désolés, une erreur interne s'est produite lors du chargement des utilisateurs...",
       ],
     });
   }
@@ -48,7 +48,7 @@ exports.registerUser = async (req, res) => {
         let errorToReturn = handleMongooseDocCreationError(
           err,
           ["email"],
-          "Oops! Une erreur interne est survenue lors de la création de votre profil"
+          "Nous sommes désolés, une erreur interne est survenue lors de la création de votre profil"
         );
 
         return res
@@ -72,7 +72,7 @@ exports.registerUser = async (req, res) => {
     } else {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne s'est produite lors de la connexion...",
+          "Nous sommes désolés, une erreur interne s'est produite lors de la connexion...",
         ],
       });
     }
@@ -127,7 +127,7 @@ exports.loginUser = async (req, res) => {
     } else {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne s'est produite lors de la connexion...",
+          "Nous sommes désolés, une erreur interne s'est produite lors de la connexion...",
         ],
       });
     }

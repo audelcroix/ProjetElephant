@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const rateLimit = require("express-rate-limit");
+const helmet = require("helmet");
 
 const path = require("path");
 
@@ -8,6 +10,21 @@ require("dotenv").config({ path: "./config/.env" });
 const cors = require("cors");
 
 const app = express();
+
+// Set security Http headers
+app.use(helmet());
+
+// Limit requests from same API
+// 100 requests within 10 minutes
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 1000 * 60 * 10,
+  message:
+    "Cette adresse IP a émis trop de requêtes, veuillez réessayer dans 10 minutes",
+});
+
+// limiter is middleware
+app.use("/api", limiter);
 
 const dbUrl =
   process.env.NODE_ENV == "production"
@@ -18,9 +35,9 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
-// for the requests
+// Body parser to read data from the body of the requests into req.body
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json({ limit: "10kb" }));
 
 // ROUTES
 app.use("/api/users", require("./routes/userRoutes"));
@@ -50,7 +67,7 @@ mongoose
 
     console.log(`Database connected, mode: ${MODE}`);
 
-    // must be last
+    // MUST BE LAST
     app.listen(PORT, () => {
       console.log(`Elephant online on port ${PORT}`);
     });

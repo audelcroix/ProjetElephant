@@ -45,7 +45,7 @@ const NoteDetail = (props) => {
             err.response && err.response.data.error_msg
               ? [err.response.data.error_msg]
               : [
-                  "Oops! Une erreur inattendue s'est produite lors du chargement",
+                  "Nous sommes désolés, une erreur inattendue s'est produite lors du chargement",
                 ]
           )
         );

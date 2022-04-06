@@ -26,7 +26,7 @@ exports.protect = async (req, res, next) => {
     if (err) {
       return res.status(401).json({
         error_msg:
-          "Oops! Une erreur interne est survenue lors du chargement de la page. Essayez de vous déconnecter et de vous reconnecter",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement de la page. Essayez de vous déconnecter et de vous reconnecter",
       });
     }
 

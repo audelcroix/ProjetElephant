@@ -37,7 +37,7 @@ exports.createCollection = async (req, res) => {
         let errorToReturn = handleMongooseDocCreationError(
           err,
           ["description", "title", "user"],
-          "Oops! Une erreur interne est survenue lors de la création de la nouvelle collection"
+          "Nous sommes désolés, une erreur interne est survenue lors de la création de la nouvelle collection"
         );
 
         return res
@@ -53,7 +53,7 @@ exports.createCollection = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["description", "title", "user"],
-      "Oops! Une erreur interne est survenue lors de la création de la nouvelle collection"
+      "Nous sommes désolés, une erreur interne est survenue lors de la création de la nouvelle collection"
     );
 
     return res
@@ -195,7 +195,7 @@ exports.deleteCollection = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors de la suppression de la collection",
+          "Nous sommes désolés, une erreur interne est survenue lors de la suppression de la collection",
         ],
       });
     } else {
@@ -245,7 +245,7 @@ exports.editCollection = async (req, res) => {
           let errorToReturn = handleMongooseDocCreationError(
             err,
             ["description", "title"],
-            "Oops! Une erreur interne est survenue lors de la mise à jour de cette collection"
+            "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de cette collection"
           );
 
           return res
@@ -262,7 +262,7 @@ exports.editCollection = async (req, res) => {
     let errorToReturn = handleMongooseDocCreationError(
       err,
       ["description", "title"],
-      "Oops! Une erreur interne est survenue lors de la mise à jour de cette collection"
+      "Nous sommes désolés, une erreur interne est survenue lors de la mise à jour de cette collection"
     );
 
     return res
@@ -304,7 +304,7 @@ exports.getCollectionComplete = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du chargement des collections",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement des collections",
         ],
       });
     } else {
@@ -349,7 +349,7 @@ exports.getUserCollection = async (req, res) => {
     if (error_msg.length < 1) {
       return res.status(500).json({
         error_msg: [
-          "Oops! Une erreur interne est survenue lors du chargement des collections",
+          "Nous sommes désolés, une erreur interne est survenue lors du chargement des collections",
         ],
       });
     } else {
