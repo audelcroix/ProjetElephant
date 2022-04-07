@@ -56,10 +56,16 @@ app.use("/api/collections", require("./routes/collectionRoutes"));
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
   // set static folder
-  app.use(express.static("client/build"));
+  /* app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  }); */
+
+  app.use(express.static(path.resolve(__dirname, "./client/build")));
+
+  app.get("*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
   });
 }
 
