@@ -13,7 +13,7 @@ const cors = require("cors");
 const app = express();
 
 // Set security Http headers
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 
 // Limit requests from same API
 // 100 requests within 10 minutes
